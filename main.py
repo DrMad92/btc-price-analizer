@@ -39,9 +39,18 @@ def main(filename):
 
     raw_data = list(zip(days, values))
     data = [Point(day=day, value=value) for day, value in raw_data]
-    greatest_increase(data)
-    greatest_decrease(data)
-    highest_price(data)
+
+    result = greatest_increase(data)
+    print('\nBiggest percent increase: ', result[0])
+    print('Day: ', result[1])
+
+    result = greatest_decrease(data)
+    print('\nBiggest percent decrease: ', result[0])
+    print('Day: ', result[1])
+
+    result = highest_price(data)
+    print('\nHighest price: ', result[0])
+    print('Day: ', result[1])
 
 
 def greatest_increase(data):
@@ -60,8 +69,7 @@ def greatest_increase(data):
         else:
             continue
 
-    print('\nBiggest percent increase: ', biggest_change)
-    print('Day: ', day_of_biggest_change)
+    return biggest_change, day_of_biggest_change
 
 
 def greatest_decrease(data):
@@ -80,8 +88,7 @@ def greatest_decrease(data):
         else:
             continue
 
-    print('\nBiggest percent decrease: ', biggest_change)
-    print('Day: ', day_of_biggest_change)
+    return biggest_change, day_of_biggest_change
 
 
 def highest_price(data):
@@ -93,12 +100,11 @@ def highest_price(data):
             max_price = data_point.value
             day_of_max_price = data_point.day
 
-    print('\nHighest price: ', max_price)
-    print('Day: ', day_of_max_price)
+    return max_price, day_of_max_price
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Shows info about BTC market based on csv file')
+    parser = argparse.ArgumentParser(description='Shows info about BTC price changes from csv file')
     parser.add_argument('-f', dest='filename', help='path to a file')
     args = parser.parse_args()
     main(args.filename)
