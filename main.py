@@ -3,6 +3,7 @@ import datetime
 import argparse
 import csv
 from collections import namedtuple
+import math
 
 defaultName = "data/btc-marketprice-" + str(datetime.date.today()) + ".csv"
 days = []
@@ -23,7 +24,7 @@ def main(filename):
                     values.append(float(row[1]))
         except Exception as e:
             print(e)
-            print('Exiting')
+            print('Check data. Exiting')
             exit()
     else:
         try:
@@ -31,10 +32,10 @@ def main(filename):
                 reader = csv.reader(csvfile, delimiter=',')
                 for row in reader:
                     days.append(row[0])
-                    values.append(row[1])
+                    values.append(float(row[1]))
         except Exception as e:
             print(e)
-            print('Exiting')
+            print('Check data. Exiting')
             exit()
 
     raw_data = list(zip(days, values))
@@ -57,6 +58,14 @@ def greatest_increase(data):
     biggest_change = 0
     day_of_biggest_change = None
 
+    for x in data:
+        if not isinstance(x.value, (int, float)):
+            print("Not a number:", type(x.value), x.value)
+            raise TypeError('Check data')
+        if not math.isfinite(x.value):
+            print("Infinity or Nan:", type(x.value), x.value)
+            raise ValueError('Check data')
+
     for i in range(len(data) - 1):
         previous = data[i].value
         current = data[i + 1].value
@@ -75,6 +84,14 @@ def greatest_increase(data):
 def greatest_decrease(data):
     biggest_change = 0
     day_of_biggest_change = None
+
+    for x in data:
+        if not isinstance(x.value, (int, float)):
+            print("Not a number:", type(x.value), x.value)
+            raise TypeError('Check data')
+        if not math.isfinite(x.value):
+            print("Infinity or Nan:", type(x.value), x.value)
+            raise ValueError('Check data')
 
     for i in range(len(data) - 1):
         previous = data[i].value
@@ -96,6 +113,12 @@ def highest_price(data):
     day_of_max_price = None
 
     for data_point in data:
+        if not isinstance(data_point.value, (int, float)):
+            print("Not a number:", type(data_point.value), data_point.value)
+            raise TypeError('Check data')
+        if not math.isfinite(data_point.value):
+            print("Infinity or Nan:", type(data_point.value), data_point.value)
+            raise ValueError('Check data')
         if max_price <= data_point.value:
             max_price = data_point.value
             day_of_max_price = data_point.day
