@@ -1,3 +1,8 @@
+from __future__ import print_function
+from __future__ import division
+from future.standard_library import install_aliases
+install_aliases()
+
 import urllib.request
 import datetime
 import argparse
@@ -16,7 +21,7 @@ def main(filename):
         filename = defaultName
         try:
             urllib.request.urlretrieve("https://api.blockchain.info/charts/market-price?format=csv",
-                                       filename)  # Python 3
+                                       filename)
             with open(filename) as csvfile:
                 reader = csv.reader(csvfile, delimiter=',')
                 for row in reader:
@@ -62,7 +67,7 @@ def greatest_increase(data):
         if not isinstance(x.value, (int, float)):
             print("Not a number:", type(x.value), x.value)
             raise TypeError('Check data')
-        if not math.isfinite(x.value):
+        if math.isinf(x.value) or math.isnan(x.value):
             print("Infinity or Nan:", type(x.value), x.value)
             raise ValueError('Check data')
 
@@ -89,7 +94,7 @@ def greatest_decrease(data):
         if not isinstance(x.value, (int, float)):
             print("Not a number:", type(x.value), x.value)
             raise TypeError('Check data')
-        if not math.isfinite(x.value):
+        if math.isinf(x.value) or math.isnan(x.value):
             print("Infinity or Nan:", type(x.value), x.value)
             raise ValueError('Check data')
 
@@ -116,7 +121,7 @@ def highest_price(data):
         if not isinstance(data_point.value, (int, float)):
             print("Not a number:", type(data_point.value), data_point.value)
             raise TypeError('Check data')
-        if not math.isfinite(data_point.value):
+        if math.isinf(data_point.value) or math.isnan(data_point.value):
             print("Infinity or Nan:", type(data_point.value), data_point.value)
             raise ValueError('Check data')
         if max_price <= data_point.value:
