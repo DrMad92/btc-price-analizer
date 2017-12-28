@@ -68,7 +68,7 @@ def greatest_increase(data):
             print("Not a number:", type(x.value), x.value)
             raise TypeError('Check data')
         if math.isinf(x.value) or math.isnan(x.value):
-            print("Infinity or Nan:", type(x.value), x.value)
+            print("Detected Infinity or Nan:", type(x.value), x.value)
             raise ValueError('Check data')
 
     for i in range(len(data) - 1):
@@ -95,7 +95,7 @@ def greatest_decrease(data):
             print("Not a number:", type(x.value), x.value)
             raise TypeError('Check data')
         if math.isinf(x.value) or math.isnan(x.value):
-            print("Infinity or Nan:", type(x.value), x.value)
+            print("Detected Infinity or Nan:", type(x.value), x.value)
             raise ValueError('Check data')
 
     for i in range(len(data) - 1):
@@ -122,7 +122,7 @@ def highest_price(data):
             print("Not a number:", type(data_point.value), data_point.value)
             raise TypeError('Check data')
         if math.isinf(data_point.value) or math.isnan(data_point.value):
-            print("Infinity or Nan:", type(data_point.value), data_point.value)
+            print("Detected Infinity or Nan:", type(data_point.value), data_point.value)
             raise ValueError('Check data')
         if max_price <= data_point.value:
             max_price = data_point.value
