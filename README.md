@@ -24,7 +24,7 @@ For help:
 ```
 python main.py -h
 ```
-##Test
+## Test
 `test.py` tests functions in `main.py` with known values and invalid inputs such as**infinity**,**NaN**,**string**and**None**.
 
 To run unittest:
@@ -39,7 +39,7 @@ For help:
 ```
 python test.py -h
 ```
-##Requirements
+## Requirements
 See `requirements.txt`
 
 Script works on both Python 2 and 3.
