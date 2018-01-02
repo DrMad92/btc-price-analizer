@@ -12,7 +12,7 @@ The script takes CSV file and tells the user the following information:
 ```
 main.py [-h] [-f FILENAME]
 ```
-By default the script downloads this[CSV file](https://blockchain.info/charts/market-price):
+By default the script downloads this [CSV file](https://blockchain.info/charts/market-price):
 ```
 python main.py
 ```
@@ -25,7 +25,7 @@ For help:
 python main.py -h
 ```
 ## Test
-`test.py` tests functions in `main.py` with known values and invalid inputs such as**infinity**,**NaN**,**string**and**None**.
+`test.py` tests functions in `main.py` with known values and invalid inputs such as **infinity**, **NaN**, **string** and **None**.
 
 To run unittest:
 ```
