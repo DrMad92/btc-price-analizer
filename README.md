@@ -1,4 +1,6 @@
 # btc-price-analyzer
+Hometask for Advanced Python course at TalTech.
+
 BTC price analyzer
 
 The script takes CSV file and tells the user the following information:
